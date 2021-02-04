@@ -12,6 +12,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  get_it: any
+  injectable: ^1.0.7
   rxdart: ^0.25.0
   bloc: ^6.1.1
   flutter_bloc: ^6.1.1
@@ -20,12 +22,24 @@ dependencies:
   path_provider: ^1.6.27
   cupertino_icons: ^1.0.0
   shared_preferences: any
+  google_fonts: ^1.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  injectable_generator: ^1.0.7
 
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/notification.png
+    - assets/calendar.png
+    - assets/festival.png
+    - assets/food.png
+    - assets/map.png
+    - assets/setting.png
+    - assets/todo.png
+    - assets/clients.png
 

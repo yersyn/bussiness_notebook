@@ -1,24 +1,27 @@
 import 'package:bloc/bloc.dart';
-import 'package:bussiness_notebook/domain/models/theme.dart';
+import 'package:bussiness_notebook/domain/models/Theme.dart';
 import 'package:bussiness_notebook/domain/useCases/PreferenceUseCase.dart';
 import 'package:bussiness_notebook/presentation/bloc/preference/PreferenceEvent.dart';
 import 'package:bussiness_notebook/presentation/bloc/preference/PreferenceState.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 
-
-
+@Injectable()
 class PreferenceBloc extends Bloc<PreferenceEvent, PreferenceState> {
   final PreferenceUseCase _preferenceUseCase;
 
   PreferenceBloc({@required PreferenceUseCase preferenceUseCase})
-      :assert(_preferenceUseCase != null),
-        _preferenceUseCase = preferenceUseCase,d
+      :assert(preferenceUseCase != null),
+        _preferenceUseCase = preferenceUseCase,
         super(PreferenceNotLoaded());
 
   @override
-  Stream<PreferenceState> mapEventToState(PreferenceEvent event) {
-    // TODO: implement mapEventToState
-    throw UnimplementedError();
+  Stream<PreferenceState> mapEventToState(PreferenceEvent event) async*{
+    if(event is LoadPreferences){
+      yield* _mapLoadPreferencesToState();
+    }else if(event is UpdateTheme){
+      yield* _mapUpdateThemeToState(event);
+    }
   }
 
   Stream<PreferenceState> _mapLoadPreferencesToState() async*{

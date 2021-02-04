@@ -1,8 +1,10 @@
-import 'package:bussiness_notebook/domain/models/theme.dart';
+import 'package:bussiness_notebook/domain/models/Theme.dart';
 import 'package:bussiness_notebook/domain/repository/PreferenceRepository.dart';
 import 'package:bussiness_notebook/domain/useCases/PreferenceUseCase.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: PreferenceUseCase)
 class PreferenceUseCaseImpl extends PreferenceUseCase{
   final PreferenceRepository _preferenceRepository;
 

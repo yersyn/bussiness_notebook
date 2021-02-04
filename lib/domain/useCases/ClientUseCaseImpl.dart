@@ -1,29 +1,40 @@
-import 'package:bussiness_notebook/domain/models/client.dart';
+import 'package:bussiness_notebook/domain/models/Client.dart';
+import 'package:bussiness_notebook/domain/repository/ClientRepository.dart';
 import 'package:bussiness_notebook/domain/useCases/ClientUseCase.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: ClientUseCase)
 class ClientUseCaseImpl implements ClientUseCase{
-  @override
-  Future<Client> deleteClient(int id) {
-    // TODO: implement deleteClient
-    throw UnimplementedError();
+  final ClientRepository _clientRepository;
+  ClientUseCaseImpl(this._clientRepository){
+    
   }
 
+  @override
+  Future<Client> getById(int id) {
+    return this._clientRepository.getById(id);
+  }
+  
   @override
   Future<List<Client>> getAllClients() {
-    // TODO: implement getAllClients
-    throw UnimplementedError();
+    return this._clientRepository.getClients();
   }
 
   @override
-  Future<Client> registerClient(Client client) {
-    // TODO: implement registerClient
-    throw UnimplementedError();
+  Future<void> registerClient(Client client) {
+    this._clientRepository.save(client);
   }
 
   @override
-  Future<Client> updateClient(int id, Client client) {
-    // TODO: implement updateClient
-    throw UnimplementedError();
+  Future<void> updateClient(int id, Client client) {
+    this._clientRepository.update(id, client);
   }
+
+  @override
+  Future<void> deleteClient(Client client) {
+    this._clientRepository.delete(client);
+  }
+
+
 
 }

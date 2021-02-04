@@ -1,4 +1,5 @@
-import 'package:bussiness_notebook/domain/models/theme.dart';
+import 'package:bussiness_notebook/domain/models/Theme.dart';
+import 'package:injectable/injectable.dart';
 
 
 abstract class PreferenceRepository{

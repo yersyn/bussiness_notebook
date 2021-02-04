@@ -1,7 +1,10 @@
 import 'package:bussiness_notebook/data/repository/local/dao/PreferenceDao.dart';
-import 'package:bussiness_notebook/domain/models/theme.dart';
+import 'package:bussiness_notebook/domain/models/Theme.dart';
+
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+@Singleton(as: PreferenceDao)
 class PreferenceDaoImpl implements PreferenceDao{
   static const String _themeIndexKey = "themeIndex";
 

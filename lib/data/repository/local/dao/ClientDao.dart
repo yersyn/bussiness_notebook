@@ -1,8 +1,6 @@
-import 'package:bussiness_notebook/domain/models/client.dart';
+import 'package:bussiness_notebook/data/repository/local/dao/_BaseDao.dart';
+import 'package:bussiness_notebook/domain/models/Client.dart';
 
-abstract class ClientDao{
-  Future<Client> get(int id);
-  Future<Client> insert(Client client);
-  Future<Client> update(int id, Client client);
-  Future<bool> delete(int id);
+abstract class ClientDao extends BaseDao<Client> {
+
 }

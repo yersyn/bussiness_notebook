@@ -1,8 +1,10 @@
-import 'package:bussiness_notebook/domain/models/client.dart';
+import 'package:bussiness_notebook/domain/models/Client.dart';
 
 abstract class ClientUseCase{
   Future<List<Client>> getAllClients();
-  Future<Client> registerClient(Client client);
-  Future<Client> updateClient(int id, Client client);
-  Future<Client> deleteClient(int id);
+  Future<Client> getById(int id);
+  Future<void> registerClient(Client client);
+  Future<void> updateClient(int id, Client client);
+  Future<void> deleteClient(Client client);
+
 }
