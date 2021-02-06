@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
 Widget loading() {
-  return CircularProgressIndicator();
+  return Align(alignment: Alignment.center, child: CircularProgressIndicator());
 }

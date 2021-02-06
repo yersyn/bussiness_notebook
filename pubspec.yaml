@@ -12,6 +12,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  intl: ^0.16.1
   get_it: any
   injectable: ^1.0.7
   rxdart: ^0.25.0

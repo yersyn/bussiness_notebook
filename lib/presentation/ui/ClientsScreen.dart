@@ -31,7 +31,9 @@ class ClientsPage extends StatelessWidget {
             child: Icon(Icons.add),
             onPressed: () {
              Navigator.of(context).push(MaterialPageRoute(builder:(ctx){
-               return ClientFormScreen(0);
+               return BlocProvider<ClientListBloc>.value(
+                   value: clientListBloc,
+                   child: ClientFormScreen(0));
              }));
             }),
         body: Center(
@@ -41,7 +43,6 @@ class ClientsPage extends StatelessWidget {
               child: BlocBuilder<ClientListBloc, ClientListState>(
                 cubit: clientListBloc,
                 builder: (context, state) {
-
                   if (state is Loaded) {
                     return Container(
                       child: (state.clients.isNotEmpty
@@ -65,8 +66,15 @@ class ClientsPage extends StatelessWidget {
         ));
   }
 
-  Card _clientCard(Client client, BuildContext context) {
-    return Card(
+  Dismissible _clientCard(Client client, BuildContext context) {
+    return Dismissible(
+      background: Container(color: Colors.deepOrange),
+      onDismissed: (direction){
+        clientListBloc.add(DeleteClientEvent(client));
+        _scaffoldKey.currentState
+            .showSnackBar(snackBar(client.name + ' eliminado'));
+      },
+      key: UniqueKey(),
         child: Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,9 +88,9 @@ class ClientsPage extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute<ClientFormScreen>(
                           builder: (context) {
-                            print("Paso de parametro");
-                            print(client.id);
-                            return ClientFormScreen(client.id);
+                            return BlocProvider<ClientListBloc>.value(
+                                value: clientListBloc,
+                                child: ClientFormScreen(client.id));
                           },
                         ),
                       );

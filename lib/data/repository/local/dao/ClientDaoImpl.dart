@@ -48,6 +48,4 @@ class ClientDaoImpl extends ClientDao{
     );
   }
 
-
-
 }
