@@ -1,4 +1,4 @@
-import 'package:bussiness_notebook/data/repository/local/dao/PreferenceDao.dart';
+import 'package:bussiness_notebook/data/configuration/local/PreferenceDao.dart';
 import 'package:bussiness_notebook/domain/models/Theme.dart';
 
 import 'package:bussiness_notebook/domain/repository/PreferenceRepository.dart';

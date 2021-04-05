@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class ClientFormScreen extends StatefulWidget {
-  final int clientId;
+  final String clientId;
 
   ClientFormScreen(this.clientId);
 
@@ -32,7 +32,7 @@ class _ClientFormScreenState extends State<ClientFormScreen> {
 
     Client client = Client();
 
-    if(widget.clientId!=0){
+    if(widget.clientId!='0'){
       client.id = widget.clientId;
     }
 

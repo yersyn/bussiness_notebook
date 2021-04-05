@@ -19,7 +19,7 @@ class ClientListBloc extends Bloc<ClientListEvent, ClientListState>{
     if(event is GetClientList){
       try {
         print("EN BLOC");
-        List<Client> clients = await clientUseCase.getAllClients();
+        List<Client> clients = await clientUseCase.getAllClients('userId');
         yield Loaded(clients);
       } catch(e) {
         yield Error(e.toString());
@@ -27,7 +27,7 @@ class ClientListBloc extends Bloc<ClientListEvent, ClientListState>{
     }else if(event is DeleteClientEvent){
       try {
         await clientUseCase.deleteClient(event.client);
-        yield Loaded(await clientUseCase.getAllClients());
+        yield Loaded(await clientUseCase.getAllClients(''));
       } catch(e) {
         yield Error(e.toString());
       }

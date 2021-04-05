@@ -6,18 +6,17 @@ import 'package:injectable/injectable.dart';
 @Injectable(as: ClientUseCase)
 class ClientUseCaseImpl implements ClientUseCase{
   final ClientRepository _clientRepository;
-  ClientUseCaseImpl(this._clientRepository){
-    
-  }
+
+  ClientUseCaseImpl(this._clientRepository);
 
   @override
-  Future<Client> getById(int id) {
+  Future<Client> getById(String id) {
     return this._clientRepository.getById(id);
   }
   
   @override
-  Future<List<Client>> getAllClients() {
-    return this._clientRepository.getClients();
+  Future<List<Client>> getAllClients(String userId) {
+    return this._clientRepository.getClients(userId);
   }
 
   @override
@@ -26,7 +25,7 @@ class ClientUseCaseImpl implements ClientUseCase{
   }
 
   @override
-  Future<void> updateClient(int id, Client client) {
+  Future<void> updateClient(String id, Client client) {
     this._clientRepository.update(id, client);
   }
 

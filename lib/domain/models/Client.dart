@@ -1,25 +1,29 @@
-import 'package:bussiness_notebook/domain/models/BaseModel.dart';
-import 'package:flutter/cupertino.dart';
 
 class Client{
-  int id;
+  String id;
+  String user;
   String name;
   String phone;
   String birthDate;
 
-  Client({this.id,this.name,this.phone,this.birthDate});
+  Client({this.user, this.id,this.name,this.phone,this.birthDate});
 
-  factory Client.fromMap(Map<String, dynamic> json) => new Client(
-      id : json['id'],
-      name: json['name'],
-      phone: json['phone'],
-      birthDate: json['birthDate']
-  );
+  factory Client.fromMap(Map<String, dynamic> json) {
+    Client client = new Client(
+        id : json['_id'],
+        user: json['user'],
+        name: json['name'],
+        phone: json['phone'],
+        birthDate: json['birthDate']
+    );
+
+    return client;
+  }
 
   @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['_id'] = this.id;
     data['name'] = this.name;
     data['phone'] = this.phone;
     data['birthDate'] = this.birthDate;
@@ -28,14 +32,14 @@ class Client{
 
   @override
   Client fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['_id'];
     name = json['name'];
     phone = json['phone'];
     birthDate = json['birthDate'];
   }
 
   Map<String, dynamic> toMap() => {
-    "id": this.id,
+    "_id": this.id,
     "name": this.name,
     "phone": this.phone,
     "birthDate": this.birthDate,

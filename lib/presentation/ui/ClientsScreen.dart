@@ -33,7 +33,7 @@ class ClientsPage extends StatelessWidget {
              Navigator.of(context).push(MaterialPageRoute(builder:(ctx){
                return BlocProvider<ClientListBloc>.value(
                    value: clientListBloc,
-                   child: ClientFormScreen(0));
+                   child: ClientFormScreen('0'));
              }));
             }),
         body: Center(
